@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VRS - VisionQuantech Review System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'background-start': '#111827',
+              'background-end': '#1a052e',
+              'surface': '#1f2937',
+              'primary': '#8b5cf6',
+              'primary-hover': '#7c3aed',
+              'secondary': '#374151',
+              'accent': '#06b6d4',
+              'glow': 'rgba(14, 165, 233, 0.5)',
+            },
+            animation: {
+              'bg-pan': 'bg-pan 15s linear infinite',
+              'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+            },
+            keyframes: {
+              'bg-pan': {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' },
+              },
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background: linear-gradient(270deg, theme('colors.background-start'), theme('colors.background-end'));
+        background-size: 200% 200%;
+        animation: bg-pan 15s ease infinite;
+      }
+      .glass-effect {
+        background: rgba(31, 41, 55, 0.5); /* bg-surface with opacity */
+        backdrop-filter: blur(10px);
+        --tw-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+       .glowing-border {
+        position: relative;
+        border: 1px solid transparent;
+        background-clip: padding-box;
+      }
+      .glowing-border::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -1px; /* same as border width */
+        border-radius: inherit; /* inherit parent's border-radius */
+        background: linear-gradient(to right, theme('colors.primary'), theme('colors.accent'));
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.24.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

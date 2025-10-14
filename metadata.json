@@ -1,0 +1,5 @@
+{
+  "name": "VRS - VisionQuantech Review System",
+  "description": "An AI-powered code review system using the Gemini API to analyze code for bugs, performance, security, and best practices, providing world-class feedback.",
+  "requestFramePermissions": []
+}
