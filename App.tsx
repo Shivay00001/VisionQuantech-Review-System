@@ -3,20 +3,21 @@ import type { User } from './types';
 import LoginPage from './pages/LoginPage';
 import ReviewPage from './pages/ReviewPage';
 
-const FOUNDER_EMAIL = 'shivam.kumar@visionquantech.com'; // Example founder email
-
 const App: React.FC = () => {
     const [user, setUser] = useState<User | null>(null);
 
     const handleLogin = useCallback(() => {
-        // In a real app, this would be the result of a Google OAuth flow
-        const loggedInUser: User = {
-            name: 'Shivam Kumar',
-            email: FOUNDER_EMAIL,
-            avatarUrl: 'https://i.pravatar.cc/150?u=shivam',
-            isFounder: true // Let's assume the founder is logging in
+        // Demo mode: no real authentication. The previous version faked a
+        // "Sign in with Google" button and fabricated a user — that was
+        // dishonest and has been removed. To add REAL Google sign-in, use
+        // Google Identity Services with YOUR_GOOGLE_CLIENT_ID from the
+        // Google Cloud console and set the user from the GIS credential.
+        const demoUser: User = {
+            name: 'Demo User',
+            email: 'demo@example.local',
+            isFounder: false,
         };
-        setUser(loggedInUser);
+        setUser(demoUser);
     }, []);
 
     const handleLogout = useCallback(() => {
